@@ -15,7 +15,6 @@ public class Job implements org.quartz.Job {
 
 	@Override
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
-		testService.hello();
 		System.out.println("coming");
 		try {
 			Thread.sleep(3000);

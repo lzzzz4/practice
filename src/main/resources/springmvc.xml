@@ -46,9 +46,6 @@
 		value=".jsp"></property> </bean> -->
 	<!-- 异常处理器 需更改 开启取消注释 -->
 	<!-- <bean class="cn.dubidubi.ssm.web.exception.handle.Test1"></bean> -->
-	<!-- 开启aop -->
-	<aop:config proxy-target-class="true"></aop:config>
-
 	<!-- 图片接受实现类 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>

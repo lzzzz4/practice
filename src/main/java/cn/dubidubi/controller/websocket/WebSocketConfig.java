@@ -18,12 +18,10 @@ import cn.dubidubi.service.ChatMessageHandler;
 // @EnableWebMvc
 @EnableWebSocket
 /**
- * 
 * @ClassName: WebSocketConfig  
 * @Description: springmvc整合websocket的配置类,在其中配置支持websocket浏览器与不支持的url
 * @author 16224  
 * @date 2018年4月23日  
-*
  */
 public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer {
 	@Autowired

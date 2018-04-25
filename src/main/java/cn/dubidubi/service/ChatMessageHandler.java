@@ -41,17 +41,24 @@ public class ChatMessageHandler extends TextWebSocketHandler {
 		super.handleTextMessage(session, message);
 	}
 
-	// 连接关闭
+	// 在连接关闭后执行的代码
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		System.out.println("关闭了连接");
+		String username = (String) session.getAttributes().get("PcUser");
+		// 删除了websocket
+		map.remove(username);
 		super.afterConnectionClosed(session, status);
 	}
-	  
+
 	// 出现异常时的操作
 	@Override
 	public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
-		// TODO Auto-generated method stub
+		// 出现异常后关闭连接,清除map
+		if (session.isOpen()) {
+			session.close();
+			map.remove(session.getAttributes().get("PcUser"));
+		}
 		super.handleTransportError(session, exception);
 	}
 
