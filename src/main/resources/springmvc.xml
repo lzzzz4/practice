@@ -13,6 +13,8 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 	<!-- 需更改 扫描controll -->
 	<context:component-scan base-package="cn.dubidubi.controller"></context:component-scan>
+	<!-- 开启aop -->
+	<aop:config proxy-target-class="true"></aop:config>
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">
 			<bean

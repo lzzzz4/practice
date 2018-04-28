@@ -30,9 +30,6 @@ public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocke
 	ChatHandshakeInterceptor chatHandshakeInterceptor;
 
 	@Override
-	/**
-	 * 
-	 */
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		// 支持websocket
 		registry.addHandler(chatMessageHandler, "/ws.do").addInterceptors(chatHandshakeInterceptor);

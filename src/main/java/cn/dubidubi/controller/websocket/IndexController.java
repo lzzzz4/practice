@@ -1,15 +1,20 @@
 package cn.dubidubi.controller.websocket;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import cn.dubidubi.model.User;
 import cn.dubidubi.service.quartz.Job;
@@ -39,5 +44,14 @@ public class IndexController {
 		request.getSession().setAttribute("PcUser", random);
 		logger.info("生成了session->pcUser:{}", user);
 		return "redirect:/index.html";
+	}
+
+	@RequestMapping("/upload")
+	public void hello(@RequestParam("file") MultipartFile[] file, HttpServletRequest request) throws IOException {
+		for (MultipartFile multipartFile : file) {
+			FileUtils.copyInputStreamToFile(multipartFile.getInputStream(),
+					new File("H:/SB/" + multipartFile.getOriginalFilename() + ".jpg"));
+		}
+		
 	}
 }
