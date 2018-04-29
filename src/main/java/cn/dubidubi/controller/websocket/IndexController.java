@@ -43,6 +43,7 @@ public class IndexController {
 		user.setDateTime(LocalDateTime.now());
 		request.getSession().setAttribute("PcUser", random);
 		logger.info("生成了session->pcUser:{}", user);
+		System.out.println("idea冲突点");
 		return "redirect:/index.html";
 	}
 
