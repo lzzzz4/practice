@@ -23,36 +23,43 @@ import cn.dubidubi.service.quartz.Quartz;
 @Controller
 @RequestMapping("/test")
 /**
- * 
-* @ClassName: IndexController  
-* @Description: websocket首页
-* @author 16224  
-* @date 2018年4月25日  
-*
+ *
+ * @ClassName: IndexController
+ * @Description: websocket首页
+ * @author 16224
+ * @date 2018年4月25日
+ *
  */
 public class IndexController {
-	@Autowired
-	Quartz quartz;
-	Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    Quartz quartz;
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@RequestMapping("/doTest")
-	public String test(HttpServletRequest request) {
-		String random = RandomStringUtils.randomAlphanumeric(7);
-		User user = new User();
-		user.setUsername(random);
-		user.setDateTime(LocalDateTime.now());
-		request.getSession().setAttribute("PcUser", random);
-		logger.info("生成了session->pcUser:{}", user);
-		System.out.println("idea冲突点");
-		return "redirect:/index.html";
-	}
 
-	@RequestMapping("/upload")
-	public void hello(@RequestParam("file") MultipartFile[] file, HttpServletRequest request) throws IOException {
-		for (MultipartFile multipartFile : file) {
-			FileUtils.copyInputStreamToFile(multipartFile.getInputStream(),
-					new File("H:/SB/" + multipartFile.getOriginalFilename() + ".jpg"));
-		}
-		
-	}
+    @RequestMapping("/doTest")
+    public String test(HttpServletRequest request) {
+        String random = RandomStringUtils.randomAlphanumeric(7);
+        User user = new User();
+        user.setUsername(random);
+        user.setDateTime(LocalDateTime.now());
+        request.getSession().setAttribute("PcUser", random);
+        logger.info("生成了session->pcUser:{}", user);
+        System.out.println("idea冲突点");
+        return "redirect:/index.html";
+    }
+
+    @RequestMapping("/upload")
+    /**@description: 测试了文件批量上传
+     * @param: [file, request]
+     * @return: void
+     * @auther: 16224
+     * @date: 2018/4/29 0029 22:32
+     */
+    public void hello(@RequestParam("file") MultipartFile[] file, HttpServletRequest request) throws IOException {
+      for (MultipartFile multipartFile : file) {
+            FileUtils.copyInputStreamToFile(multipartFile.getInputStream(),
+                    new File("H:/SB/" + multipartFile.getOriginalFilename() + ".jpg"));
+        }
+        System.out.println("file = [" + file + "], request = [" + request + "]");
+    }
 }
