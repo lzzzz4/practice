@@ -53,6 +53,6 @@ public class IndexController {
 			FileUtils.copyInputStreamToFile(multipartFile.getInputStream(),
 					new File("H:/SB/" + multipartFile.getOriginalFilename() + ".jpg"));
 		}
-		
+		System.out.println("error!");
 	}
 }
