@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-	<context:property-placeholder location="classpath:db.properties" />
+	<context:property-placeholder location="classpath:db.properties" ignore-unresolvable="true"/>
 	<bean name="druid" class="com.alibaba.druid.pool.DruidDataSource">
 		<property name="username" value="${jdbc.user}"></property>
 		<property name="password" value="${jdbc.password}"></property>
