@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
 
+import cn.dubidubi.dao.biliCosMapper;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.slf4j.Logger;
@@ -33,6 +34,8 @@ import cn.dubidubi.service.quartz.Quartz;
 public class IndexController {
     @Autowired
     Quartz quartz;
+    @Autowired
+    biliCosMapper biliCosMapper;
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
@@ -55,10 +58,20 @@ public class IndexController {
      * @date: 2018/4/29 0029 22:32
      */
     public void hello(@RequestParam("file") MultipartFile[] file, HttpServletRequest request) throws IOException {
-      for (MultipartFile multipartFile : file) {
+        for (MultipartFile multipartFile : file) {
             FileUtils.copyInputStreamToFile(multipartFile.getInputStream(),
                     new File("H:/SB/" + multipartFile.getOriginalFilename() + ".jpg"));
         }
         System.out.println("file = [" + file + "], request = [" + request + "]");
+    }
+
+    @RequestMapping("/second")
+    public void second() {
+        System.out.println("hello");
+        biliCosMapper.selectByPrimaryKey(3);
+        biliCosMapper.selectByPrimaryKey(1);
+        biliCosMapper.selectByPrimaryKey(4);
+        biliCosMapper.selectByPrimaryKey(6);
+        System.out.println("select");
     }
 }

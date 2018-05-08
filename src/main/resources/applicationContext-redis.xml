@@ -10,15 +10,15 @@
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxIdle" value="${redis.maxIdle}" />
         <property name="maxTotal" value="${redis.maxTotal}" />
-        <property name="maxWaitMillis" value="${redis.maxWait}" />
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
         <property name="testOnBorrow" value="${redis.testOnBorrow}" />
     </bean>
     <!--配置redispool -->
     <bean id="JedisPool" class="redis.clients.jedis.JedisPool">
         <constructor-arg index="0" ref="jedisPoolConfig" />
-        <constructor-arg index="1" value="${redis.host}"/>
-        <constructor-arg index="2" value="${redis.port}"/>
-        <constructor-arg index="3" value="${redis.timeOut}" />
-        <constructor-arg index="4" value="${redis.password}" />
+        <constructor-arg index="1" value="${host}"/>
+        <constructor-arg index="2" value="${port}"/>
+        <constructor-arg index="3" value="${redis.timeout}" />
+        <constructor-arg index="4" value="${password}" />
     </bean>
 </beans>
