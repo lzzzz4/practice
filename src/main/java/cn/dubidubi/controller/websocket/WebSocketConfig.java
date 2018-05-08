@@ -18,24 +18,24 @@ import cn.dubidubi.service.ChatMessageHandler;
 // @EnableWebMvc
 @EnableWebSocket
 /**
-* @ClassName: WebSocketConfig  
-* @Description: springmvc整合websocket的配置类,在其中配置支持websocket浏览器与不支持的url
-* @author 16224  
-* @date 2018年4月23日  
+ * @ClassName: WebSocketConfig
+ * @Description: springmvc整合websocket的配置类, 在其中配置支持websocket浏览器与不支持的url
+ * @author 16224
+ * @date 2018年4月23日
  */
 public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer {
-	@Autowired
-	ChatMessageHandler chatMessageHandler;
-	@Autowired
-	ChatHandshakeInterceptor chatHandshakeInterceptor;
+    @Autowired
+    ChatMessageHandler chatMessageHandler;
+    @Autowired
+    ChatHandshakeInterceptor chatHandshakeInterceptor;
 
-	@Override
-	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		// 支持websocket
-		registry.addHandler(chatMessageHandler, "/ws.do").addInterceptors(chatHandshakeInterceptor);
-		// 不支持websocket
-		registry.addHandler(chatMessageHandler, "/sockjs/webSocketServer").addInterceptors(chatHandshakeInterceptor)
-				.withSockJS();
-	}
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        // 支持websocket
+        registry.addHandler(chatMessageHandler, "/ws.do").addInterceptors(chatHandshakeInterceptor);
+        // 不支持websocket
+        registry.addHandler(chatMessageHandler, "/sockjs/webSocketServer").addInterceptors(chatHandshakeInterceptor)
+                .withSockJS();
+    }
 
 }

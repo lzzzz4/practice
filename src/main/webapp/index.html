@@ -1,56 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Bootstrap 模板</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
-<!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
-<!--[if lt IE 9]>
-         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-      <![endif]-->
+    <title>Bootstrap demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-	<button id="#btn">btn</button>
-	<div id="div"></div>
-	<!-- websocket -->
-	<script type="text/javascript"
-		src="http://localhost:8080/PracticeDemo/jquery.min.js"></script>
-	<script>  
-        var websocket;  
-      
-        if ('WebSocket' in window) {  
-            websocket = new WebSocket("ws://localhost:8080/PracticeDemo/ws.do");  
-        } else if ('MozWebSocket' in window) {  
-            websocket = new MozWebSocket("ws://" + document.location.host + "/Bank/webSocketServer");  
-        } else {  
-            websocket = new SockJS("http://" + document.location.host + "/Bank/sockjs/webSocketServer");  
-        }  
-      
-        websocket.onopen = function(evnt) {
-        	alert("打开了websocket")
-        };  
-        websocket.onmessage = function(evnt) {  
-            $("#test").html("(<font color='red'>" + evnt.data + "</font>)")  
-        };  
-      
-        websocket.onerror = function(evnt) {
-        	
-        };  
-        
-        websocket.onclose = function(evnt) {
-        	
-        };  
-      
-        $('#btn').on('click', function() {  
-            if (websocket.readyState == websocket.OPEN) {  
-                var msg = $('#id').val();  
-                //调用后台handleTextMessage方法  
-                websocket.send(msg);  
-            } else {  
-                alert("连接失败!");  
-            }  
-        });  
-    </script>
+<button id="btn">btn</button>
+<div id="div"></div>
+<!-- websocket -->
+<script type="text/javascript"
+        src="http://localhost:8080/practice/jquery.min.js"></script>
+<script>
+    var websocket;
+    if ('WebSocket' in window) {
+        websocket = new WebSocket("ws://localhost:8080/practice/ws.do");
+    } else if ('MozWebSocket' in window) {
+        websocket = new MozWebSocket("ws://localhost:8080/practice/ws.do");
+    } else {
+        websocket = new SockJS("http://" + document.location.host + "/Bank/sockjs/webSocketServer");
+    }
+
+    websocket.onopen = function (evnt) {
+        alert("寮�鍚痺ebsocket")
+    };
+    websocket.onmessage = function (evnt) {
+
+        $("#div").append("<p>" + evnt.data + "</p>")
+    };
+
+    websocket.onerror = function (evnt) {
+
+    };
+
+    websocket.onclose = function (evnt) {
+
+    };
+
+    $('#btn').click(function () {
+        if (websocket.readyState == websocket.OPEN) {
+            var msg = "hello lzj"
+            websocket.send(msg);
+        } else {
+            alert("澶辫触!");
+        }
+    })
+</script>
 </body>
 </html>
