@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @Auther: 16224
  * @Date: 2018/5/9 0009 13:20
- * @Description:mybatis的路由插件
+ * @Description:mybatis的拦截器，依据sql语句，选择库，并将库传入spring的source路由，有路由去获得指定的源
  */
 @Intercepts({
         @Signature(type = Executor.class, method = "update", args = {
@@ -38,16 +38,15 @@ public class RouteDataSourcePlugin implements Interceptor {
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         //它首先查看当前是否存在事务管理上下文，并尝试从事务管理上下文获取连接，如果获取失败，直接从数据源中获取连接。
-        //在获取连接后，如果当前拥有事务上下文，则将连接绑定到事务上下文中。（此处直接继续下一过程）
+        //在获取连接后，如果当前拥有事务上下文，则将连接绑定到事务上下文中。
         boolean synchronizationActive = TransactionSynchronizationManager.isSynchronizationActive();
         if (!synchronizationActive) {
             Object[] objects = invocation.getArgs();
             MappedStatement ms = (MappedStatement) objects[0];
-
             RouteDataSourceKeyEnum routeDataSourceKeyEnum = null;
-
+            //将路由的某个sql语句走哪个库缓存至map中
             if ((routeDataSourceKeyEnum = cacheMap.get(ms.getId())) == null) {
-                //读方法
+                //读方法，依据select标签判断
                 if (ms.getSqlCommandType().equals(SqlCommandType.SELECT)) {
                     //!selectKey 为自增id查询主键(SELECT LAST_INSERT_ID() )方法，使用主库
                     if (ms.getId().contains(SelectKeyGenerator.SELECT_KEY_SUFFIX)) {
