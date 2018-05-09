@@ -13,7 +13,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 	<!-- 需更改 扫描controll -->
 	<context:component-scan base-package="cn.dubidubi.controller"></context:component-scan>
-	<!-- 开启aop -->
+	<!-- 开启shiro aop -->
 	<aop:config proxy-target-class="true"></aop:config>
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">
@@ -48,7 +48,7 @@
 		value=".jsp"></property> </bean> -->
 	<!-- 异常处理器 需更改 开启取消注释 -->
 	<!-- <bean class="cn.dubidubi.ssm.web.exception.handle.Test1"></bean> -->
-	<!-- 图片接受实现类 -->
+	<!-- 文件接受实现类 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 	<!-- 拦截器 需更改 开启取消注释 -->

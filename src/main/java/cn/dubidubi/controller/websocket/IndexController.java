@@ -3,6 +3,7 @@ package cn.dubidubi.controller.websocket;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -67,11 +68,9 @@ public class IndexController {
 
     @RequestMapping("/second")
     public void second() {
-        System.out.println("hello");
-        biliCosMapper.selectByPrimaryKey(3);
-        biliCosMapper.selectByPrimaryKey(1);
-        biliCosMapper.selectByPrimaryKey(4);
-        biliCosMapper.selectByPrimaryKey(6);
-        System.out.println("select");
+        List<String> strings = biliCosMapper.selectByPrimaryKey();
+        for (String string : strings) {
+            System.out.println("string = " + string);
+        }
     }
 }

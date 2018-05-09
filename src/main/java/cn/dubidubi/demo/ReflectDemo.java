@@ -57,7 +57,7 @@ public class ReflectDemo {
 //        }
         ReflectDemo ReflectDemo =new ReflectDemo();
         Class Class = ReflectDemo.getClass();
-        Method[] methods = Class.getMethods();
+        Method[] methods = Class.getDeclaredMethods();
         for (int i = 0; i < methods.length; i++) {
             System.out.println("method"+methods[i].getName());
         }
