@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsonp</title>
+</head>
+<body>
+hello world
+<button id="btn">hello</button>
+</body>
+<script src="jquery.min.js"></script>
+<script>
+    $("#btn").click(function () {
+        $.ajax({
+            url: "http://127.0.0.1:8080/practice/jsonp/todo.do",
+            type: "GET",
+            dataType: "jsonp",  //指定服务器返回的数据类型
+            jsonpCallback: "showData",  //指定回调函数名称
+            success: function (data) {
+                console.info("调用success");
+                alert("hello")
+                alert(data.name)
+            }
+        });
+    })
+</script>
+</html>
