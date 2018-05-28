@@ -3,6 +3,9 @@ package cn.dubidubi.service;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import cn.dubidubi.model.MyMessage;
+
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.CloseStatus;
@@ -40,7 +43,10 @@ public class ChatMessageHandler extends TextWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         System.out.println("前端推送了消息" + message);
         //给推送的回送消息
-        TextMessage TextMessage =new TextMessage("i receive");
+        MyMessage MyMessage =new MyMessage();
+        MyMessage.setName("lzj");
+        MyMessage.setUsername("lzjjjj");
+        TextMessage TextMessage =new TextMessage(JSON.toJSONString(MyMessage));
         session.sendMessage(TextMessage);
         super.handleTextMessage(session, message);
     }

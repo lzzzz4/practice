@@ -63,7 +63,7 @@ public class RouteDataSourcePlugin implements Interceptor {
                 } else {
                     routeDataSourceKeyEnum = RouteDataSourceKeyEnum.MASTER;
                 }
-                logger.warn("方法[{}] use [{}] 库", ms.getId(), routeDataSourceKeyEnum.name());
+                logger.info("方法[{}] 使用了 [{}] 库", ms.getId(), routeDataSourceKeyEnum.name());
                 cacheMap.put(ms.getId(), routeDataSourceKeyEnum);
             }
             RouteDataSource.setDbKey(routeDataSourceKeyEnum);

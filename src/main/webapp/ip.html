@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="jquery.min.js"></script>
+<script>
+    $(function () {
+        $.ajax({
+            url: "http://dubidubi.cn/practice/ip/show.do",
+            type: "POST",
+            dataType: "json",  //指定服务器返回的数据类型
+            success: function (data) {
+                alert(data.ip)
+            },
+            error: function (data) {
+                alert(data.ip)
+            }
+        });
+    })
+
+</script>
+</html>

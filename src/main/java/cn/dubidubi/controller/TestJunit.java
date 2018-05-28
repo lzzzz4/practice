@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import cn.dubidubi.dao.redis.JedisTestDemo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,11 +25,14 @@ import redis.clients.jedis.JedisPool;
 public class TestJunit {
 
     @Autowired
+    @Qualifier("service2")
     TestService TestService;
     @Autowired
     JedisTestDemo JedisTestDemo;
+
     @RequestMapping("/zz")
     public void a() {
+
         User user = new User();
         user.setUsername("1111");
         user.setDateTime(LocalDateTime.now());
@@ -37,7 +41,7 @@ public class TestJunit {
     }
 
     @RequestMapping("/redis")
-    public  void redis(){
+    public void redis() {
         JedisTestDemo.test();
     }
 }

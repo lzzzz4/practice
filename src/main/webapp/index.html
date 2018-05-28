@@ -30,8 +30,9 @@
         alert("开启websocket")
     };
     websocket.onmessage = function (evnt) {
-
-        $("#div").append("<p>" + evnt.data + "</p>")
+        var json =JSON.parse(evnt.data)
+        $("#div").append("<p>" + json.name + "</p>")
+        $("#div").append("<p>" + json.username + "</p>")
     };
 
     websocket.onerror = function (evnt) {

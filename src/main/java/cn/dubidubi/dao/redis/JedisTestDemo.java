@@ -7,6 +7,8 @@ import redis.clients.jedis.JedisPool;
 
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @Auther: 16224
@@ -21,9 +23,17 @@ public class JedisTestDemo {
         Jedis resource = jedisPool.getResource();
         Set<String> keys = resource.keys("*");
         Iterator<String> iterator = keys.iterator();
-        while (iterator.hasNext()){
-            System.out.println(iterator.next());
+        for (String key : keys) {
+            System.out.println(key);
         }
         resource.close();
     }
+
+    public static void demo(int ...i){
+        for (int j = 0; j < i.length; j++) {
+            int i1 = i[j];
+            System.out.println(i1);
+        }
+    }
+
 }

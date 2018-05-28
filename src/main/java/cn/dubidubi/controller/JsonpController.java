@@ -1,7 +1,9 @@
 package cn.dubidubi.controller;
 
 import cn.dubidubi.model.biliCos;
+import cn.dubidubi.service.TransService;
 import com.alibaba.fastjson.JSON;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,10 +18,18 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/jsonp")
 public class JsonpController {
+    @Autowired
+    TransService TransService;
+
     @RequestMapping("/todo")
     public void todo(String callback, HttpServletResponse response) throws IOException {
         biliCos biliCos = new biliCos();
         biliCos.setName("lzj");
         response.getWriter().write(callback + "(" + JSON.toJSONString(biliCos) + ")");
+    }
+
+    @RequestMapping("/title")
+    public void ddooo(String title) {
+        TransService.all(title);
     }
 }
