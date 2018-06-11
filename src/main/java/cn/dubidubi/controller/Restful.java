@@ -21,7 +21,7 @@ public class Restful {
     @ResponseBody
     public String show(@PathVariable String sb, @ModelAttribute("prepare") String s2) {
         System.out.println("sb" + sb);
-        System.out.println("prepare" + s2);
+        System.out.println("prepare2" + s2);
         return "hello";
     }
 }

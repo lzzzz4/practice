@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Restful2 {
     @RequestMapping("/show")
     public void show() {
-        System.out.println("show");
+        System.out.println("show2");
     }
 }
