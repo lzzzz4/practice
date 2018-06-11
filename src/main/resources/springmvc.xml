@@ -42,6 +42,7 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
+
 	<!-- jsp视图解析器 配置返回的前缀后缀 -->
 	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
 		<property name="prefix" value="/WEB-INF/jsp/"></property> <property name="suffix" 
