@@ -11,11 +11,13 @@
 <script>
     $(function () {
         $.ajax({
-            url: "http://dubidubi.cn/practice/ip/show.do",
+            url: "http://localhost:8080/practice/friend/v1/lzzz4",
             type: "POST",
+            data: {"demo": "哈哈哈哈"},
             dataType: "json",  //指定服务器返回的数据类型
             success: function (data) {
-                alert(data.ip)
+                alert(data.username);
+                alert(data.demo)
             },
             error: function (data) {
                 alert(data.ip)
