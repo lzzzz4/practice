@@ -8,7 +8,6 @@ package cn.dubidubi.util;
 public class lambdaDemo {
     public static void test(Demo1 demo1){
         System.out.println("hello");
-        demo1.sb();
     }
     public static void main(String[] args){
        int a =20;
