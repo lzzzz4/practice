@@ -6,13 +6,15 @@ package cn.dubidubi.util;
  * @Description:
  */
 public class lambdaDemo {
-    public static void test(Demo1 demo1){
+    public static void test(Demo1 demo1) {
         System.out.println("hello");
+        System.out.println("hello world2");
         demo1.sb();
     }
-    public static void main(String[] args){
-       int a =20;
-       int b =a>10?20:30;
-       System.out.println("b = " + b);
+
+    public static void main(String[] args) {
+        int a = 20;
+        int b = a > 10 ? 20 : 30;
+        System.out.println("b = " + b);
     }
 }
