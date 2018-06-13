@@ -11,5 +11,6 @@ public class AllDemo {
         TestClass TestClass =new TestClass();
         TestClass testClass2 =new TestClass();
         System.out.println(TestClass.getClass() == testClass2.getClass());
+        System.out.println(TestClass.getClass() == testClass2.getClass());
     }
 }
