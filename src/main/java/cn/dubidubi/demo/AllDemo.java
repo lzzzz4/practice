@@ -7,9 +7,10 @@ package cn.dubidubi.demo;
  */
 public class AllDemo {
 
-    public static void main(String[] args){
-        TestClass TestClass =new TestClass();
-        TestClass testClass2 =new TestClass();
+    public static void main(String[] args) {
+        TestClass TestClass = new TestClass();
+        TestClass testClass2 = new TestClass();
         System.out.println(TestClass.getClass() == testClass2.getClass());
+        System.out.println("冲突3");
     }
 }
